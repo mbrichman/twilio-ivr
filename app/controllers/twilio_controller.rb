@@ -23,6 +23,7 @@ class TwilioController < ApplicationController
       logger.info 'said 2'
     end
     @message_id = params['Digits']
+    render action: "options.xml.builder", layout: false
   end
 
 end
