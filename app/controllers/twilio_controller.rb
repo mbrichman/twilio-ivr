@@ -1,4 +1,6 @@
 class TwilioController < ApplicationController
+  protect_from_forgery :except => :options
+  respond_to :xml
 
   def hello
     people = {
