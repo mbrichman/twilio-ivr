@@ -2,6 +2,12 @@ class TwilioController < ApplicationController
   protect_from_forgery :except => :options
   respond_to :xml
 
+  def say_hi
+    TwilioInterface.new.call('13122036261', hello_url(format: xml))
+    # TwilioInterface.new.sms('13122036261', 'hola')
+    render layout: false
+  end
+
   def hello
     people = {
       '+13122036261' => 'Curious George',

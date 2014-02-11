@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  service_date: 2014-02-11 14:07:19
+  start_time: 2014-02-11 14:07:19
+  end_time: 2014-02-11 14:07:19
+
+two:
+  service_date: 2014-02-11 14:07:19
+  start_time: 2014-02-11 14:07:19
+  end_time: 2014-02-11 14:07:19
