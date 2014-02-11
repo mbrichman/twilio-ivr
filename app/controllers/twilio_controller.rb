@@ -13,4 +13,15 @@ class TwilioController < ApplicationController
     @name = people[params['From']] || 'Monkey'
   end
 
+  def options
+    logger.info params
+    if params['Digits'] == '1'
+      logger.info "said 1"
+    elsif params['Digits'] == '2'
+      logger.info 'said 2'
+    end
+
+
+  end
+
 end
