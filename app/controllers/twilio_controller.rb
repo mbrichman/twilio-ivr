@@ -31,6 +31,7 @@ class TwilioController < ApplicationController
     @appointment = Appointment.find(params[:id])
     if params['Digits'] == '1'
       @appointment.update_attributes(appointment_time: @appointment.start)
+      logger.info "========= record updated ============="
     elsif params['Digits'] == '2'
       logger.info 'said 2'
     end
