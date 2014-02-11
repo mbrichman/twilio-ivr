@@ -31,15 +31,12 @@ class TwilioController < ApplicationController
     @appointment = Appointment.find(params[:id])
     if params['Digits'] == '1'
       @appointment.update_attributes(appointment_time: @appointment.start)
-      @message = "Yay! She loves me."
       logger.info "========= record updated ============="
     elsif params['Digits'] == '2'
-      @message = "Boo! I'm so sad."
       @appointment.update_attributes(appointment_time: @appointment.end)
       logger.info 'said 2'
     end
-    @message_id = @message
-    # @message_id = params['Digits']
+    @message_id = params['Digits']
     render action: "options.xml.builder", layout: false
   end
 
