@@ -4,7 +4,7 @@ class TwilioController < ApplicationController
 
   def say_hi
     @appointment = Appointment.find(params[:id])
-    TwilioInterface.new.call('13122036261', "http://aqueous-peak-6506.herokuapp.com/hello.xml?id=#{params[:id]}")
+    TwilioInterface.new.call('17739838563', "http://aqueous-peak-6506.herokuapp.com/hello.xml?id=#{params[:id]}")
     # TwilioInterface.new.sms('13122036261', 'hola')
     render :nothing => true
     # render layout: false
