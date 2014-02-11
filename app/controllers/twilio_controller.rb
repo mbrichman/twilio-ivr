@@ -6,6 +6,9 @@ class TwilioController < ApplicationController
     @appointment = Appointment.find(params[:id])
     @start = @appointment.start
     @end = @appointment.end
+    logger.info @start
+    logger.info @end
+    logger.info @appointment.inspect
     TwilioInterface.new.call('13122036261', "http://aqueous-peak-6506.herokuapp.com/hello.xml")
     # TwilioInterface.new.sms('13122036261', 'hola')
     render :nothing => true
