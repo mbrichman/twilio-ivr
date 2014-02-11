@@ -22,8 +22,7 @@ class TwilioController < ApplicationController
     elsif params['Digits'] == '2'
       logger.info 'said 2'
     end
-
-
+    @message_id = params['Digits']
   end
 
 end
