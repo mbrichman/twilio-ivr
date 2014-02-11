@@ -3,7 +3,7 @@ class TwilioController < ApplicationController
   respond_to :xml
 
   def say_hi
-    TwilioInterface.new.call('13122036261', "http://aqueous-peak-6506.herokuapp.com/hello.xml")
+    TwilioInterface.new.call('13122036261', "http://aqueous-peak-6506.herokuapp.com/hello.xml", method: 'get')
     # TwilioInterface.new.sms('13122036261', 'hola')
     render layout: false
   end
