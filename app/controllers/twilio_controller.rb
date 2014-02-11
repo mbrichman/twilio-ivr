@@ -15,9 +15,9 @@ class TwilioController < ApplicationController
       '+14158675311' => 'Virgil',
       '+14158675312' => 'Marcel',
     }
-    logger.info " ==========  START  =============="
-    logger.info params
-    logger.info " ==========  END  =============="
+    # logger.info " ==========  START  =============="
+    # logger.info params
+    # logger.info " ==========  END  =============="
     @name = people[params['From']] || 'Monkey'
   end
 
