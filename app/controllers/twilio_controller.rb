@@ -1,5 +1,5 @@
 class TwilioController < ApplicationController
-  protect_from_forgery :except => :options
+  protect_from_forgery :except => [:options, :parse_times]
   respond_to :xml
 
   def say_hi
