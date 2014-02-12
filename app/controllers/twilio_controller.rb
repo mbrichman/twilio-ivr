@@ -44,10 +44,10 @@ class TwilioController < ApplicationController
     # render action: "options.xml.builder", layout: false
   end
 
-  def parse_times
-    logger.info '------------ times ----------------'
-    logger.info params['Digits']
+  # def parse_times
+  #   logger.info '------------ times ----------------'
+  #   logger.info params['Digits']
 
-  end
+  # end
 
 end
