@@ -1,5 +1,5 @@
 class TwilioController < ApplicationController
-  protect_from_forgery :except => [:options, :parse_times]
+  protect_from_forgery :except => :options
   respond_to :xml
 
   def say_hi
@@ -43,11 +43,5 @@ class TwilioController < ApplicationController
     @message_id = params['Digits']
     # render action: "options.xml.builder", layout: false
   end
-
-  # def parse_times
-  #   logger.info '------------ times ----------------'
-  #   logger.info params['Digits']
-
-  # end
 
 end
