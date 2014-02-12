@@ -35,11 +35,19 @@ class TwilioController < ApplicationController
     elsif params['Digits'] == '2'
       @appointment.update_attributes(appointment_time: @appointment.end)
       logger.info 'said 2'
+    elsif params['Digits'] == '3'
+      render action: "time_options.xml.builder", layout: false
     else
       render action: "hello.xml.builder", layout: false
     end
     @message_id = params['Digits']
-    render action: "options.xml.builder", layout: false
+    # render action: "options.xml.builder", layout: false
+  end
+
+  def parse_times
+    logger.info '------------ times ----------------'
+    logger.info params['Digits']
+
   end
 
 end
