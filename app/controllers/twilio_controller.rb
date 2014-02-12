@@ -41,7 +41,7 @@ class TwilioController < ApplicationController
 
   def parse_times
     logger.info '---------- Here I am -------------'
-    logger.info params['Digits']
+    logger.info params['Digits'].class
     @message = params['Digits']
     render action: "parse_times.xml.builder", layout: false
   end
