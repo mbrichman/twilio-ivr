@@ -42,7 +42,7 @@ class TwilioController < ApplicationController
   def parse_times
     Rails.logger.warn '---------- Here I am -------------'
     Rails.logger.warn params['Digits']
-    appointment = Appointment.find(params[:id])
+    appointment = Appointment.find(1)
     Rails.logger.warn { appointment.inspect }
     chosen_time = appointment.parse_twilio_time(params['Digits'])
     if chosen_time.errors.present?
