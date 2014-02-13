@@ -15,10 +15,10 @@ class TwilioController < ApplicationController
     @start = @appointment.start_time_text
     @end = @appointment.end_time_text
     people = {
-      '+13122036261' => 'Curious George',
-      '+14158675310' => 'Boots',
-      '+14158675311' => 'Virgil',
-      '+14158675312' => 'Marcel',
+      '+13122036261' => 'Mark',
+      '+12052433331' => 'Coco',
+      '+18479623405' => 'Shreena',
+      '+13129537950' => 'Danielle',
     }
     # logger.info " ==========  START  =============="
     # logger.info params
@@ -40,10 +40,7 @@ class TwilioController < ApplicationController
   end
 
   def parse_times
-    Rails.logger.warn '---------- Here I am -------------'
-    Rails.logger.warn params['Digits']
     appointment = Appointment.find(params[:id])
-    Rails.logger.warn { appointment.inspect }
     appointment.parse_twilio_time(params['Digits'])
     @message = {}
     if appointment.errors.present?
@@ -56,7 +53,7 @@ class TwilioController < ApplicationController
   end
 
   def confirm
-    Rails.logger.warn params
+    Rails.logger.warn {params}
     appointment = Appointment.find(params[:id])
     unless params['Digits'] == '1'
       render action: "time_options.xml.builder", layout: false
