@@ -22,6 +22,8 @@ class TwilioController < ApplicationController
     # logger.info params
     # logger.info " ==========  END  =============="
     @name = people[params['From']] || 'Monkey'
+    @start = @appointment.start_time_text
+    @end = @appointment.end_time_text
   end
 
   def options
