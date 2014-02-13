@@ -42,12 +42,13 @@ class TwilioController < ApplicationController
   def parse_times
     Rails.logger.warn '---------- Here I am -------------'
     Rails.logger.warn params['Digits']
-    appointment = Appointment.find(1)
+    appointment = Appointment.find(params[:id])
     Rails.logger.warn { appointment.inspect }
-    chosen_time = appointment.parse_twilio_time(params['Digits'])
-    if chosen_time.errors.present?
-      @message = chosen_time.errors.full_messages
+    appointment.parse_twilio_time(params['Digits'])
+    if appointment.errors.present?
+      @message = appointment.errors.full_messages.first
     else
+      chosen_time = appointment.parse_twilio_time(params['Digits'])
       @message = "You've select to accept the appointment at #{chosen_time.to_s(:time)}. Press 1 to confirm or 2 to re-enter the time."
     end
     render action: "parse_times.xml.builder", layout: false
