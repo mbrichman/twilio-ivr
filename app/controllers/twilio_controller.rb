@@ -41,8 +41,14 @@ class TwilioController < ApplicationController
 
   def parse_times
     logger.info '---------- Here I am -------------'
-    logger.info params['Digits'].class
-    @message = params['Digits']
+    logger.info params['Digits']
+    appointment = Appointment.find(params[:id])
+    chosen_time = appointment.parse_twilio_time(params['Digits'])
+    if chosen_time.errors.present?
+      @message = chosen_time.errors.full_messages
+    else
+      @message = "You've select to accept the appointment at #{chosen_time.to_s(:time)}. Press 1 to confirm or 2 to re-enter the time."
+    end
     render action: "parse_times.xml.builder", layout: false
   end
 
