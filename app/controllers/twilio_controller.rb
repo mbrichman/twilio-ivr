@@ -45,13 +45,24 @@ class TwilioController < ApplicationController
     appointment = Appointment.find(params[:id])
     Rails.logger.warn { appointment.inspect }
     appointment.parse_twilio_time(params['Digits'])
+    @message = {}
     if appointment.errors.present?
-      @message = appointment.errors.full_messages.first
+      @message[:error] = appointment.errors.full_messages.first
     else
       chosen_time = appointment.parse_twilio_time(params['Digits'])
-      @message = "You've select to accept the appointment at #{chosen_time.to_s(:time)}. Press 1 to confirm or 2 to re-enter the time."
+      @message[:text] = "You've selected to accept the appointment at #{chosen_time.to_s(:time)}. Press 1 to confirm or 2 to re-enter the time."
     end
     render action: "parse_times.xml.builder", layout: false
+  end
+
+  def confirm
+    Rails.logger.warn params
+    appointment = Appointment.find(params[:id])
+    if params['Digits'] == '1'
+      appointment_time.update_attributes(appointment_time: )
+    elsif params['Digits'] == '2'
+      render action: "time_options.xml.builder", layout: false
+    end
   end
 
 end
