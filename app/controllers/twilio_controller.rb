@@ -12,8 +12,6 @@ class TwilioController < ApplicationController
 
   def hello
     @appointment = Appointment.find(params[:id])
-    @start = @appointment.start_time_text
-    @end = @appointment.end_time_text
     people = {
       '+13122036261' => 'Mark',
       '+12052433331' => 'Coco',
@@ -28,6 +26,8 @@ class TwilioController < ApplicationController
 
   def options
     @appointment = Appointment.find(params[:id])
+    @start = @appointment.start_time_text
+    @end = @appointment.end_time_text
     if params['Digits'] == '1'
       @appointment.update_attributes(appointment_time: @appointment.start_time_text)
     elsif params['Digits'] == '2'
