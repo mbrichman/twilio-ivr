@@ -32,8 +32,10 @@ class TwilioController < ApplicationController
     @end = @appointment.end_time_text
     if params['Digits'] == '1'
       @appointment.update_attributes(appointment_time: @appointment.start_time_text)
+      render action: "final_confirm.xml.builder", layout: false
     elsif params['Digits'] == '2'
       @appointment.update_attributes(appointment_time: @appointment.end_time_text)
+      render action: "final_confirm.xml.builder", layout: false
     elsif params['Digits'] == '3'
       render action: "time_options.xml.builder", layout: false
     else
