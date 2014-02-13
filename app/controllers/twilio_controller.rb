@@ -40,9 +40,10 @@ class TwilioController < ApplicationController
   end
 
   def parse_times
-    logger.info '---------- Here I am -------------'
-    logger.info params['Digits']
+    logger.warn '---------- Here I am -------------'
+    logger.warn params['Digits']
     appointment = Appointment.find(params[:id])
+    logger.warn { appointment.inspect }
     chosen_time = appointment.parse_twilio_time(params['Digits'])
     if chosen_time.errors.present?
       @message = chosen_time.errors.full_messages
