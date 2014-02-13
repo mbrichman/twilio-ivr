@@ -59,7 +59,7 @@ class TwilioController < ApplicationController
     Rails.logger.warn params
     appointment = Appointment.find(params[:id])
     if params['Digits'] == '1'
-      appointment_time.update_attributes(appointment_time: )
+      # appointment_time.update_attributes(appointment_time: )
     elsif params['Digits'] == '2'
       render action: "time_options.xml.builder", layout: false
     end
