@@ -24,6 +24,7 @@ class TwilioController < ApplicationController
     @name = people[params['From']] || 'Monkey'
     @start = @appointment.start_time_text
     @end = @appointment.end_time_text
+    render action: "hello.xml.builder", layout: false
   end
 
   def options
