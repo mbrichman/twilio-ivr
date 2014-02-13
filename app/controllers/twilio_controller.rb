@@ -12,8 +12,8 @@ class TwilioController < ApplicationController
 
   def hello
     @appointment = Appointment.find(params[:id])
-    @start = @appointment.start
-    @end = @appointment.end
+    @start = @appointment.start_time_text
+    @end = @appointment.end_time_text
     people = {
       '+13122036261' => 'Curious George',
       '+14158675310' => 'Boots',
@@ -29,9 +29,9 @@ class TwilioController < ApplicationController
   def options
     @appointment = Appointment.find(params[:id])
     if params['Digits'] == '1'
-      @appointment.update_attributes(appointment_time: @appointment.start)
+      @appointment.update_attributes(appointment_time: @appointment.start_time_text)
     elsif params['Digits'] == '2'
-      @appointment.update_attributes(appointment_time: @appointment.end)
+      @appointment.update_attributes(appointment_time: @appointment.end_time_text)
     elsif params['Digits'] == '3'
       render action: "time_options.xml.builder", layout: false
     else
