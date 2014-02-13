@@ -60,6 +60,7 @@ class TwilioController < ApplicationController
     appointment = Appointment.find(params[:id])
     if params['Digits'] == '1'
       render action: "final_confirm.xml.builder", layout: false
+      return
       # appointment_time.update_attributes(appointment_time: )
     elsif params['Digits'] == '2'
       render action: "time_options.xml.builder", layout: false
