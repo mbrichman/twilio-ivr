@@ -8,3 +8,12 @@ The application works, but has not much UI to speak of.
 
 If you wish to try to use the application it must be deployed on an Internet facing host such as Heroku.
 Twilio requires that the URL be accessible to its servers.
+
+1. Clone the repository locally
+2. Push to heroku or similar
+3. run 'heroku run rake db:seed' to create an appointment, alternately, go to /appointments/new to create one
+4. Create an environment variable on your host with the name PHONE_NUMBER set to your phone number as a string
+ie heroku config:set PHONE_NUMBER='13125551212'
+5. navigate to '/say_hi/1'
+6. Twilio will call you
+
